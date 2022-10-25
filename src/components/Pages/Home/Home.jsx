@@ -13,7 +13,7 @@ const Home = () => {
   };
   return (
     <div>
-      <section className="mb-4">
+      <section className="lg:mb-12 md:mb-8 mb-6">
         <div className="hero min-h-screen bg-base-200" style={myStyle}>
           <div className="hero-content flex-col lg:flex-row-reverse">
             <img src={HeroImage} className="max-w-sm rounded-lg shadow-2xl" />
@@ -26,7 +26,7 @@ const Home = () => {
                 build your unless and powerfull Skills. The e-Tutor provides you
                 many Powerful courses for your future journey.
               </p>
-              <button className="btn bg-rose-800 border-0">Get Started</button>
+              <Link to={'/courses'}><button className="btn bg-rose-800 border-0">Get Started</button></Link>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@ const Home = () => {
       <hr />
         <div className="lg:p-12">
           <HomeContent></HomeContent>
-          <p className="text-center mt-5"><Link className="btn border-0 hover:bg-rose-800 hover:border-0" to={''}>View Courses</Link></p>
+          <p className="text-center mt-5"><Link className="btn border-0 hover:bg-rose-800 hover:border-0" to={'/courses'}>View Courses</Link></p>
         </div>
       </section>
     </div>
