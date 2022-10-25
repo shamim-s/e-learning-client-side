@@ -1,4 +1,5 @@
 import Blog from "../Pages/Blog/Blog";
+import CourseDetailsPage from "../Pages/CourseDetailsPage/CourseDetailsPage";
 import Courses from "../Pages/Courses/Courses";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Faq from "../Pages/FAQ/Faq";
@@ -40,6 +41,11 @@ export const routes = createBrowserRouter([
                 path: '/faq',
                 element: <Faq></Faq>
             },
+            {
+                path: '/course-details/:id',
+                element: <CourseDetailsPage></CourseDetailsPage>,
+                loader: ({params}) => fetch(`https://e-tutor-server-shamim-s.vercel.app/courses/${params.id}`)
+            }
         ]
     }
 ])
