@@ -1,6 +1,8 @@
 import React from "react";
 import HeroImage from "../../../images/3699660.jpg";
 import bgImage from "../../../images/17973908.png";
+import HomeContent from "./HomeContent";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const myStyle = {
@@ -11,7 +13,7 @@ const Home = () => {
   };
   return (
     <div>
-      <section>
+      <section className="mb-4">
         <div className="hero min-h-screen bg-base-200" style={myStyle}>
           <div className="hero-content flex-col lg:flex-row-reverse">
             <img src={HeroImage} className="max-w-sm rounded-lg shadow-2xl" />
@@ -29,9 +31,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section>
-        <h1>Learn the secrets to Life Success</h1>
-    
+      <section className="">
+      <h1 className="lg:text-3xl font-bold text-center md:text-3xl mb-2">Learn the secrets to Life Success</h1>
+      <hr />
+        <div className="lg:p-12">
+          <HomeContent></HomeContent>
+          <p className="text-center mt-5"><Link className="btn border-0 hover:bg-rose-800 hover:border-0" to={''}>View Courses</Link></p>
+        </div>
       </section>
     </div>
   );
