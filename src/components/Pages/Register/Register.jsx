@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Register = () => {
-    return (
-        <div>
-            <h2>Register</h2>
-        </div>
-    );
+  return (
+    <div>
+      
+    </div>
+  );
 };
 
 export default Register;

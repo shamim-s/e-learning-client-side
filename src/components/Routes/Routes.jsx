@@ -25,16 +25,16 @@ export const routes = createBrowserRouter([
                 loader: () => fetch(`https://e-tutor-server-shamim-s.vercel.app/courses`)
             },
             {
-                path: '/login',
-                element: <Login></Login>
-            },
-            {
                 path: '/register',
                 element: <Register></Register>
             },
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             },
             {
                 path: '/faq',
