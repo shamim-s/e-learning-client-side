@@ -100,6 +100,7 @@ const Navbar = () => {
           {user?.uid ? (
             <>
               {user?.photoURL ? (
+                <Link to={'/user-profile'}>
                 <div
                   className="tooltip tooltip-bottom tooltip-primary"
                   data-tip={user.displayName}
@@ -110,12 +111,13 @@ const Navbar = () => {
                     alt="userImage"
                   />
                 </div>
+                </Link>
               ) : (
                 <div
                   className="tooltip tooltip-bottom tooltip-primary"
                   data-tip={user.displayName}
                 >
-                  <HiOutlineUserCircle className="text-4xl" />
+                  <Link to={'/user-profile'}><HiOutlineUserCircle className="text-4xl" /></Link>
                 </div>
               )}
               <HiOutlineLogout

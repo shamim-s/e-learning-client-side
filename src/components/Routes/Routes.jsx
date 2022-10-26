@@ -7,6 +7,7 @@ import Faq from "../Pages/FAQ/Faq";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Profile from "../Pages/UserProfile/Profile";
 import PrivetRoutes from "../PrivetRoutes/PrivetRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -52,6 +53,10 @@ export const routes = createBrowserRouter([
                 path: '/checkout/:id',
                 element: <PrivetRoutes><CourseEnrollment></CourseEnrollment></PrivetRoutes>,
                 loader: ({params}) => fetch(`https://e-tutor-server-shamim-s.vercel.app/checkout/${params.id}`)
+            },
+            {
+                path: '/user-profile',
+                element: <PrivetRoutes><Profile></Profile></PrivetRoutes>
             }
         ]
     }
