@@ -10,7 +10,7 @@ const CourseCard = ({ course }) => {
     <div>
       <section>
         <div className="mx-auto">
-          <div className="card w-72 h-96 bg-slate-50 shadow-xl">
+          <div className="card w-72 h-96 bg-base-200 shadow-xl">
             <figure className="px-10 pt-10">
               <img src={picture} alt="Courses" className="rounded-xl w-36" />
             </figure>
@@ -18,7 +18,7 @@ const CourseCard = ({ course }) => {
               <h2 className="card-title font-bold">{name}</h2>
               <p>{details.slice(0, 40) + "....."}</p>
               <div className="card-actions">
-                <Link to={`/course-details/${id}`}><button className="btn bg-rose-800 border-0 ">
+                <Link to={`/course-details/${id}`}><button className="btn  border-0 ">
                   View Details
                 </button></Link>
               </div>

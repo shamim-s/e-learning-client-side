@@ -3,7 +3,7 @@ import star from '../../../images/star.png';
 const Modal = ({closeModal, course}) => {
   return (
     <div className="absolute lg:top-12 top-44 lg:left-96 left-0 lg:p-0 md:p-4 p-4">
-      <div className="relative flex flex-col items-center max-w-lg gap-4 p-6 rounded-md shadow-gray-900 shadow-2xl bg-slate-200 sm:py-8 sm:px-12 dark:bg-gray-900 dark:text-gray-100">
+      <div className="relative flex flex-col items-center max-w-lg gap-4 p-6 rounded-md shadow-gray-900 shadow-2xl bg-base-200 sm:py-8 sm:px-12 dark:bg-gray-900 dark:text-gray-100">
         <button onClick={() => {closeModal(false)}} className="absolute top-2 right-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"

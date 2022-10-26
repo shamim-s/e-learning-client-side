@@ -77,7 +77,7 @@ const Profile = () => {
               </svg>
             </Link>
           </div>
-          <Link className="mt-4 text-rose-800">Back To Home</Link>
+          <Link to={'/'} className="mt-4 text-rose-800">Back To Home</Link>
         </div>
       </div>
     </div>

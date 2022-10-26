@@ -59,7 +59,7 @@ const Navbar = () => {
           </div>
           <Link
             to={"/"}
-            className="btn btn-ghost normal-case text-xl font-bold text-rose-800"
+            className="btn btn-ghost normal-case text-xl font-bold "
           >
             <span
               className="lg:text-3xl md:text-3xl text-2xl tooltip tooltip-bottom tooltip-primary"
@@ -71,7 +71,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0 font-bold text-rose-800">
+          <ul className="menu menu-horizontal p-0 font-bold ">
             <li>
               <Link to={"/"}>HOME</Link>
             </li>
@@ -122,11 +122,11 @@ const Navbar = () => {
               )}
               <HiOutlineLogout
                 onClick={handleLogout}
-                className="text-4xl ml-4 text-red-600"
+                className="text-4xl ml-4 "
               />
             </>
           ) : (
-            <Link to={"login"} className="btn bg-rose-800 border-0">
+            <Link to={"login"} className="btn  border-0">
               LOGIN
             </Link>
           )}
