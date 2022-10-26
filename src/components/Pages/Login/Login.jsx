@@ -1,24 +1,52 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/Context";
 
 const Login = () => {
+	const {loginUser, setUser} =  useContext(AuthContext);
+	const naviget = useNavigate();
+
+	const handleLogin = event => {
+		event.preventDefault();
+
+		const form = event.target;
+		const email = form.email.value;
+		const password = form.password.value;
+
+		loginUser(email, password)
+		.then( result => {
+			const user = result.user;
+			setUser(user);
+			form.reset();
+			toast.success("Login Success!");
+			naviget('/');
+			console.log(user);
+		})
+		.catch( error => {
+			console.error(error);
+			toast.error(error.messsage);
+		})
+
+	}
   return (
     <div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100 mx-auto lg:mt-10 md:mt-8 mt-6 lg:mb-10 md:mb-8 mb-6 bg-slate-100">
 	<h1 className="text-2xl font-bold text-center">Login</h1>
-	<form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+	<form onSubmit={handleLogin}  action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
 		<div className="space-y-1 text-sm">
-			<label for="username" className="block dark:text-gray-400">Username</label>
-			<input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+			<label htmlFor="username" className="block dark:text-gray-400">Email</label>
+			<input type="text" name="email" id="useremail" placeholder="email" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
 		</div>
 		<div className="space-y-1 text-sm">
-			<label for="password" className="block dark:text-gray-400">Password</label>
+			<label htmlFor="password" className="block dark:text-gray-400">Password</label>
 			<input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
 			<div className="flex justify-end text-xs dark:text-gray-400">
 				<Link rel="noopener noreferrer" href="#">Forgot Password?</Link>
 			</div>
 		</div>
-		<button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">Sign in</button>
+		<button className="btn block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">Sign in</button>
 	</form>
 	<div className="flex items-center pt-4 space-x-1">
 		<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>

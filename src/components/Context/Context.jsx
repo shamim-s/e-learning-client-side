@@ -1,9 +1,59 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
+import {createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile} from 'firebase/auth';
+import app from '../../firebase/firebase.config';
+
+// firebase getAuth and app 
+const auth = getAuth(app);
+
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
+
+// context 
 export const AuthContext = createContext();
 
 const Context = ({children}) => {
+    const [user, setUser] = useState({});
 
-    const userInfo = {}
+
+    const createUser = (email, password) => {
+       return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    const loginUser = (email, password) => {
+       return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    const loginWithPopUpGoogle = () => {
+        return signInWithPopup(auth, googleProvider);
+    }
+
+    const loginWithPopUpGitHub = () => {
+        return signInWithPopup(auth, githubProvider);
+    }
+
+    const userUpdate = name => {
+       return updateProfile(auth.currentUser, {displayName: name});
+    }
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+                setUser(currentUser);
+        })
+        
+        return () => unsubscribe;
+    },[])
+
+    //Passing  data here using context value 
+    const userInfo = {
+        user, 
+        setUser, 
+        createUser, 
+        loginUser,
+        loginWithPopUpGoogle,
+        loginWithPopUpGitHub,
+        userUpdate
+    }
+
     return (
         <div>
             <AuthContext.Provider value={userInfo}>

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/Context";
+import { HiOutlineLogout, HiOutlineUserCircle } from "react-icons/hi";
 
 const Navbar = () => {
+  const {user} = useContext(AuthContext);
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -41,7 +45,8 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Link to={'/'} className="btn btn-ghost normal-case text-xl font-bold text-rose-800"><span className="lg:text-3xl md:text-3xl text-2xl">E</span>-TUTOR</Link>
+          <Link to={'/'} className="btn btn-ghost normal-case text-xl font-bold text-rose-800"><span 
+          className="lg:text-3xl md:text-3xl text-2xl tooltip tooltip-bottom tooltip-primary" data-tip="back to home">E</span>-TUTOR</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0 font-bold text-rose-800">
@@ -60,7 +65,16 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to={'login'} className="btn bg-rose-800 border-0">LOGIN</Link>
+          {
+            user?.uid ? <>
+            {
+              user?.photoURL ? <img src={user.photoURL} alt={user.displayName} /> :
+              <div className="tooltip tooltip-bottom tooltip-primary" data-tip={user.displayName}><HiOutlineUserCircle className="text-4xl"/></div>
+            }
+            <HiOutlineLogout className="text-4xl ml-4 text-red-600"/>
+            </>: 
+            <Link to={'login'} className="btn bg-rose-800 border-0">LOGIN</Link>
+          }
         </div>
       </div>
     </div>

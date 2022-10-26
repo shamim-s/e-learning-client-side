@@ -1,42 +1,81 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/Context";
 
 const Register = () => {
+  const {createUser, userUpdate, setUser} = useContext(AuthContext);
+  const naviget = useNavigate();
+
+  const handleSubmit = event => {
+      event.preventDefault();
+
+      const form = event.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const password = form.password.value;
+
+      createUser(email, password)
+      .then( result => {
+        const user = result.user;
+
+        userUpdate(name)
+        .then(() => {
+          toast.success("Name update success!");
+        })
+        .catch( error => {
+          toast.error(error.message) 
+          console.log(error);
+        })
+
+        console.log(user);
+        form.reset();
+        naviget('/');
+        toast.success('Registered Successfully!');
+        setUser(user);
+      })
+      .catch( error => {
+        console.error(error);
+        toast.error(error.message);
+      })
+  }
   return (
     <div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100 mx-auto lg:mt-10 md:mt-8 mt-6 lg:mb-10 md:mb-8 mb-6 bg-slate-100">
         <h1 className="text-2xl font-bold text-center">Sign Up</h1>
         <form
-          novalidate=""
+          onSubmit={handleSubmit}
           action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-1 text-sm">
-            <label for="username" className="block dark:text-gray-400">
+            <label htmlFor="username" className="block dark:text-gray-400">
               Username
             </label>
             <input
               type="text"
-              name="username"
+              name="name"
               id="username"
               placeholder="Username"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label for="username" className="block dark:text-gray-400">
+            <label htmlFor="email" className="block dark:text-gray-400">
               email
             </label>
             <input
               type="text"
-              name="username"
-              id="username"
+              name="email"
+              id="email"
               placeholder="Username"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label for="password" className="block dark:text-gray-400">
+            <label htmlFor="password" className="block dark:text-gray-400">
               Password
             </label>
             <input
@@ -44,15 +83,11 @@ const Register = () => {
               name="password"
               id="password"
               placeholder="Password"
+              required
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
-            <div className="flex justify-end text-xs dark:text-gray-400">
-              <Link rel="noopener noreferrer" href="#">
-                Forgot Password?
-              </Link>
-            </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">
+          <button type="submit" className=" btn block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">
             Sign in
           </button>
         </form>
@@ -87,10 +122,10 @@ const Register = () => {
           Already have an account?
           <Link
             rel="noopener noreferrer"
-            to={"/register"}
+            to={"/login"}
             className="underline dark:text-gray-100"
           >
-            Sign Up
+            Login
           </Link>
         </p>
       </div>
