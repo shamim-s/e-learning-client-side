@@ -30,9 +30,9 @@ const Register = () => {
 
         console.log(user);
         form.reset();
-        naviget('/');
         toast.success('Registered Successfully!');
         setUser(user);
+        naviget('/');
       })
       .catch( error => {
         console.error(error);

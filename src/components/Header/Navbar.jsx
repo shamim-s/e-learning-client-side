@@ -2,10 +2,22 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/Context";
 import { HiOutlineLogout, HiOutlineUserCircle } from "react-icons/hi";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext);
+  const {user, logoutUser, setUser} = useContext(AuthContext);
 
+  const handleLogout = () => {
+    logoutUser()
+    .then(() => {
+      toast.success("Logout Success!");
+      setUser({});
+    })
+    .catch( error => {
+      console.error(error);
+      toast.error(error.message);
+    })
+  }
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -68,10 +80,11 @@ const Navbar = () => {
           {
             user?.uid ? <>
             {
-              user?.photoURL ? <img src={user.photoURL} alt={user.displayName} /> :
-              <div className="tooltip tooltip-bottom tooltip-primary" data-tip={user.displayName}><HiOutlineUserCircle className="text-4xl"/></div>
+              user?.photoURL ? <img src={user.photoURL} className="tooltip tooltip-bottom tooltip-primary" data-tip={user.displayName} alt="userImage" /> :
+              <div className="tooltip tooltip-bottom tooltip-primary" 
+              data-tip={user.displayName}><HiOutlineUserCircle className="text-4xl"/></div>
             }
-            <HiOutlineLogout className="text-4xl ml-4 text-red-600"/>
+            <HiOutlineLogout onClick={handleLogout} className="text-4xl ml-4 text-red-600"/>
             </>: 
             <Link to={'login'} className="btn bg-rose-800 border-0">LOGIN</Link>
           }
