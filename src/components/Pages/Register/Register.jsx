@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/Context";
 
 const Register = () => {
@@ -10,6 +10,9 @@ const Register = () => {
     setUser, 
     loginWithPopUpGoogle,
     loginWithPopUpGitHub } = useContext(AuthContext);
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
   const naviget = useNavigate();
 
@@ -38,7 +41,7 @@ const Register = () => {
         form.reset();
         toast.success('Registered Successfully!');
         setUser(user);
-        naviget('/');
+        naviget(from, {replace: true});
       })
       .catch( error => {
         console.error(error);

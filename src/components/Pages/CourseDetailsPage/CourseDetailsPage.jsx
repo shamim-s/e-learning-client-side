@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaStar, FaBookReader, FaCalendarAlt, FaDollarSign } from "react-icons/fa";
+import Modal from "../CourseEnrollment/Modal";
 
 const CourseDetailsPage = () => {
   const course = useLoaderData();
-  const { name, details, duration, enrolled, picture, price, review } = course;
+
+  const { name, details, duration, enrolled, picture, price, review, id } = course;
 
   return (
     <div className="max-w-lg p-4 shadow-xl dark:bg-gray-900 dark:text-gray-100 mx-auto mt-8 mb-8 rounded-xl">
@@ -36,7 +38,7 @@ const CourseDetailsPage = () => {
           <p className="text-lg font-medium flex items-center text-yellow-400"><FaStar className="mr-2"/>{review}</p>
           <p className="text-xl font-bold text-orange-500 flex items-center"><FaDollarSign className="mr-2"/>{price}</p>
         </div>
-        <button className="btn mr-4">Enroll Now</button>
+        <Link to={`/checkout/${id}`}><button className="btn mr-4">Enroll Now</button></Link>
         <button className="btn bg-green-700 border-0">Download PDF</button>
       </div>
     </div>

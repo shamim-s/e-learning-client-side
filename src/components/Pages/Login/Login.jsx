@@ -1,11 +1,14 @@
 import React from "react";
 import { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/Context";
 
 const Login = () => {
 	const {loginUser, setUser} =  useContext(AuthContext);
+	const location = useLocation();
+	const from = location.state?.from?.pathname || '/';
+
 	const naviget = useNavigate();
 
 	const handleLogin = event => {
@@ -18,15 +21,15 @@ const Login = () => {
 		loginUser(email, password)
 		.then( result => {
 			const user = result.user;
-			setUser(user);
 			form.reset();
 			toast.success("Login Success!");
-			naviget('/');
+			setUser(user);
+			naviget(from, {replace: true});
 			console.log(user);
 		})
 		.catch( error => {
 			console.error(error);
-			toast.error(error.messsage);
+			toast.error(error.message);
 		})
 
 	}
