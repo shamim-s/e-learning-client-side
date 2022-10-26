@@ -88,7 +88,7 @@ const Navbar = () => {
         </div>
         <label
           for="Toggle1"
-          className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100"
+          className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100 ml-2"
         >
           <span className="relative">
             <input id="Toggle1" type="checkbox" className="hidden peer bg-base-200" />

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaStar, FaBookReader, FaCalendarAlt, FaDollarSign } from "react-icons/fa";
-import Modal from "../CourseEnrollment/Modal";
 
 const CourseDetailsPage = () => {
   const course = useLoaderData();
@@ -39,7 +38,6 @@ const CourseDetailsPage = () => {
           <p className="text-xl font-bold text-orange-500 flex items-center"><FaDollarSign className="mr-2"/>{price}</p>
         </div>
         <Link to={`/checkout/${id}`}><button className="btn mr-4">Enroll Now</button></Link>
-        <button className="btn bg-green-700 border-0">Download PDF</button>
       </div>
     </div>
   );
