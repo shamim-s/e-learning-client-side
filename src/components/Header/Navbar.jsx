@@ -80,7 +80,7 @@ const Navbar = () => {
           {
             user?.uid ? <>
             {
-              user?.photoURL ? <img src={user.photoURL} className="tooltip tooltip-bottom tooltip-primary" data-tip={user.displayName} alt="userImage" /> :
+              user?.photoURL ? <div className="tooltip tooltip-bottom tooltip-primary" data-tip={user.displayName}><img src={user.photoURL} className="w-10 rounded-full" alt="userImage"/></div> :
               <div className="tooltip tooltip-bottom tooltip-primary" 
               data-tip={user.displayName}><HiOutlineUserCircle className="text-4xl"/></div>
             }

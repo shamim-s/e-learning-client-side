@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/Context";
 
 const Register = () => {
-  const {createUser, userUpdate, setUser} = useContext(AuthContext);
+  const {createUser, userUpdate, setUser, loginWithPopUpGoogle} = useContext(AuthContext);
   const naviget = useNavigate();
 
   const handleSubmit = event => {
@@ -39,6 +39,23 @@ const Register = () => {
         toast.error(error.message);
       })
   }
+
+  const handleGoogleSignUP = () => {
+    loginWithPopUpGoogle()
+    .then( result => {
+      const user = result.user;
+
+        console.log(user);
+        toast.success('Registered Successfully!');
+        setUser(user);
+        naviget('/');
+    })
+    .catch(error => {
+      console.error(error);
+      toast.error(error.message);
+    })
+  }
+
   return (
     <div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100 mx-auto lg:mt-10 md:mt-8 mt-6 lg:mb-10 md:mb-8 mb-6 bg-slate-100">
@@ -99,7 +116,7 @@ const Register = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button onClick={handleGoogleSignUP} aria-label="Log in with Google" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
