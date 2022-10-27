@@ -1,19 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Image from '../../../images/Na_June_37.jpg';
+import React from "react";
+import { Link } from "react-router-dom";
+import Image from "../../../images/Na_June_37.jpg";
 
 const ErrorPage = () => {
-    return (
-        <div className='flex flex-col justify-center items-center w-full h-screen'>
-            <h1 className='text-9xl font-bold animate-bounce ease-in-out'>
-                <span className='text-yellow-500'>4</span>
-                <span className='text-lime-600'>0</span> 
-                <span className='text-blue-600'>4</span>
-                </h1>
-            <h1 className='lg:text-5xl md:text-4xl text-3xl font-bold mb-4'>PAGE NOT FOUND</h1>
-            <p><Link to={'/'} className='btn'>BACK TO HOME</Link></p>
+  return (
+    <section className="flex items-center h-full p-16 dark:bg-gray-900 dark:text-gray-100">
+      <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+        <div className="max-w-md text-center">
+          <h2 className="mb-8 font-extrabold text-9xl dark:text-gray-600">
+            <span className="sr-only">Error</span>404
+          </h2>
+          <p className="text-2xl font-semibold md:text-3xl">
+            Sorry, we couldn't find this page.
+          </p>
+          <p className="mt-4 mb-8 dark:text-gray-400">
+            But dont worry, you can find plenty of other things on our homepage.
+          </p>
+          <Link
+            to={'/'}
+            rel="noopener noreferrer"
+            href="#"
+            className="btn px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+          >
+            Back to homepage
+          </Link>
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default ErrorPage;

@@ -57,7 +57,7 @@ const Register = () => {
         console.log(user);
         toast.success('Signup Successfully!');
         setUser(user);
-        naviget('/');
+        naviget(from, {replace: true});
     })
     .catch(error => {
       console.error(error);
@@ -73,7 +73,7 @@ const Register = () => {
         console.log(user);
         toast.success('Signup Successfully!');
         setUser(user);
-        naviget('/');
+        naviget(from, {replace: true});;
     })
     .catch(error => {
       console.error(error);

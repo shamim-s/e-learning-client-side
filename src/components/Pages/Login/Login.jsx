@@ -5,14 +5,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/Context";
 
 const Login = () => {
+	const location = useLocation();
+	const from = location.state?.from?.pathname || '/';
+
 	const {
 		loginUser, 
 		setUser, 
 		loginWithPopUpGoogle, 
 		loginWithPopUpGitHub} =  useContext(AuthContext);
-
-	const location = useLocation();
-	const from = location.state?.from?.pathname || '/';
 
 	const naviget = useNavigate();
 
@@ -30,7 +30,6 @@ const Login = () => {
 			toast.success("Login Success!");
 			setUser(user);
 			naviget(from, {replace: true});
-			console.log(user);
 		})
 		.catch( error => {
 			console.error(error);

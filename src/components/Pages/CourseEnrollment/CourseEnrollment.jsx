@@ -46,7 +46,7 @@ const CourseEnrollment = () => {
                   type="text"
                   name="fname"
                   placeholder="First name"
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900 p-1"
                 />
               </div>
               <div className="col-span-full sm:col-span-3">
@@ -58,7 +58,7 @@ const CourseEnrollment = () => {
                   name="lname"
                   type="text"
                   placeholder="Last name"
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900 p-1"
                 />
               </div>
               <div className="col-span-full sm:col-span-3">
@@ -69,29 +69,30 @@ const CourseEnrollment = () => {
                   id="email"
                   type="email"
                   placeholder="Email"
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900 p-1"
                 />
               </div>
+              <hr />
               <div className="col-span-full">
-                <label htmlFor="address" className="text-sm">
-                  Address
+                <label htmlFor="cardnumber" className="text-sm">
+                  Card Number
                 </label>
                 <input
-                  id="address"
-                  type="text"
-                  placeholder=""
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                  id="cardnumber"
+                  type="number"
+                  placeholder="5425 •••• •••• 9903"
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900 p-1"
                 />
               </div>
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="city" className="text-sm">
-                  City
+                  Expiration
                 </label>
                 <input
-                  id="city"
-                  type="text"
-                  placeholder=""
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                  id="expiration"
+                  type="number"
+                  placeholder="08/22"
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900 p-1"
                 />
               </div>
               <div className="col-span-full sm:col-span-2">
@@ -100,9 +101,9 @@ const CourseEnrollment = () => {
                 </label>
                 <input
                   id="state"
-                  type="text"
+                  type="country"
                   placeholder=""
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900 p-1"
                 />
               </div>
               <div className="col-span-full sm:col-span-2">
@@ -113,7 +114,7 @@ const CourseEnrollment = () => {
                   id="zip"
                   type="text"
                   placeholder=""
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900 p-1"
                 />
               </div>
             </div>
