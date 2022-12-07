@@ -67,7 +67,7 @@ const Navbar = () => {
             >
               E
             </span>
-            -TUTOR
+            -LEARNING
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
