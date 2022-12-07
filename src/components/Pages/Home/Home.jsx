@@ -19,7 +19,7 @@ const Home = () => {
             <img src={HeroImage} className="max-w-sm rounded-lg shadow-2xl" />
             <div>
               <h1 className="lg:text-5xl md:text-4xl text-3xl lg:mt-0 md:mt-4 mt-16 font-bold text-rose-800">
-                WELCOME TO E-TUTOR
+                WELCOME TO E-LEARNING
               </h1>
               <p className="py-6">
                 The best online learning platfrom. Here you get everything to
