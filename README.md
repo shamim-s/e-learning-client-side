@@ -1,6 +1,6 @@
-# 1. PROJECT_NAME: E-TUTOR
+# 1. PROJECT_NAME: E-Learning
 
-## 2. WEBSITE_NAME: E-TUTOR
+## 2. WEBSITE_NAME: E-Learning
 
 ## LIVE SITE LINK : https://ace-study-366510.web.app/
 
